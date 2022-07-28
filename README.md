@@ -1,4 +1,12 @@
 # Neural-network
+
+# 1. Some conventions
+- in `Sequential([...])` we can put in `tf.keras.Input(shape=(a,))` to indicate shape of inputs, also helps instantiate weights
+- input for each layer must be 2d
+
+
+
+
 3 basic steps:
  - chose model
  - define loss function
@@ -12,14 +20,20 @@ using
 - `a.adapt(X)` with `X` is the training set, to learn mean and variance
 - `X_normalized = a(X)` 
 
-# 3. Some details
-in `Sequential([...])` we can put in `tf.keras.Input(shape=(a,))` to indicate shape of inputs, also helps instantiate weights
+
 
 # 4. Vectorization
 
 
 ![](pic1.png?raw=true)
 
-Suppose training set is X of the shape m.n matrix, each training example is a row. 
+Suppose training set is A of the shape $m.n$ matrix, each training example $X= (x_1,...,x_n)$ is a row. 
 At each layer, each unit returns a real value by the activation function
-$$f(\sum a)$$
+$$f(\sum^n_1 w_ix_i + b)$$
+
+- Since A is of $m.n$, the output $a^{[1]}$ of layer1 is obtained by matrix W, where W must be of the form $n.p$, where $p$ is the number of units (e.g n=400, p=25). This means that at each unit, the parameters $w_1,...,w_n$ in activation functions are written as columns in W. 
+- B is a collection of biases, so length of B is equal to the number of unit (e.g lenB = 25) and we have
+$$a^{[1]} = f(X.W + B)$$ 
+- note that B can be 1d (p,) or 2d (p,1)
+
+For summary, W of the size $in.out$ where $in$ and $out$ are the lengths of input and ouput.
