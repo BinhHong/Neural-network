@@ -16,3 +16,10 @@ using
 in `Sequential([...])` we can put in `tf.keras.Input(shape=(a,))` to indicate shape of inputs, also helps instantiate weights
 
 # 4. Vectorization
+
+
+![](pic1.png?raw=true)
+
+Suppose training set is X of the shape m.n matrix, each training example is a row. 
+At each layer, each unit returns a real value by the activation function
+$$f(\sum a)$$
