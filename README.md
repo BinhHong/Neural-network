@@ -37,3 +37,11 @@ $$a^{[1]} = f(X.W + B)$$
 - note that B can be 1d (p,) or 2d (p,1)
 
 For summary, W of the size $in.out$ where $in$ and $out$ are the lengths of input and ouput.
+
+# 5. Backward propagation
+is used to compute partial derivatives in gradient descent.
+# 6. Activation functions
+- linear $\sim$ "no activation function"
+- sigmoid
+- rectified linear unit ReLU
+- softmax
