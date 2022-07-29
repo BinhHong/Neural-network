@@ -56,7 +56,7 @@ $$a_i=\frac{e^{z_i}}{\sum e^{z_j} }$$
 $$(a_1,...,a_N)=g(z_1,...,z_N)$$
 where $g(z_1,...,z_N)= (\frac{e^{z_1}}{\sum e^{z_j}},..., \frac{e^{z_N}}{\sum e^{z_j}})$
 
-Basically, use intermediate variables and then substitute them causes more error. Avoid by using `activation='linear'` instead of `activation='softmax'` and `model.compile(loss=SparseCrossEntropy(from_logits=True))` instead of `model.compile(loss=SparseCategoricalCrossEntropy(from_logits=True))`.
+Basically, use intermediate variables and then substitute them causes more error. Avoid by using `activation='linear'` instead of `activation='softmax'` and `model.compile(loss=SparseCategoricalCrossEntropy(from_logits=True))` instead of `model.compile(loss=SparseCategoricalCrossEntropy(from_logits=True))`.
 
 Note that in the Predict section, the old one is `model(X_test)`, which gives values of `a_1, ..., a_N` now gives values of `z_1, ..., z_N`, because of `activation='linear'`. To compute the probabilities, we write 
 
@@ -69,3 +69,8 @@ For logistic regression, the last line becomes `f_x = tf.nn.sigmoid(logits)`
 # 8. Multi-label classification
 
 consists of several binary classifications. Therefore in the output layer, we use sigmoid activation. Note that the probabilities in this case are separated, their sum is not equal to 1.
+
+# 9. SparseCategoricalCrossentropy vs CategoricalCrossentropy
+
+- SparseCategoricalCrossentropy: use when we expect outputs to be integers corresponding to the indices.
+- CategoricalCrossentropy: Expects the target value of an example to be one-hot encoded where the value at the target index is 1 while the other N-1 entries are zero. An example with 10 potential target values, where the target is 2 would be [0,0,1,0,0,0,0,0,0,0].
