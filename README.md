@@ -45,3 +45,5 @@ is used to compute partial derivatives in gradient descent.
 - sigmoid
 - rectified linear unit ReLU
 - softmax
+
+Softmax activation function is not a good naming, since at each neutron, the function used is a multivariate function, not univariate, and the functions used at neutrons are totally different. We should use the name $Softmax layer$. 
