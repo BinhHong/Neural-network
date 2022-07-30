@@ -90,3 +90,4 @@ High bias (training error is high) vs high variance (validation error >> trainin
 - $d$ = polynomial degree, runs from 1 to very large, then training error runs from high to low, appro 0. However, validation error runs from high, low at somewhere in middle then high again.
 - similar fact happens for regularization parameter $\lambda$, but somewhat like the mirror image of the case of polynomial degree.
 - define bias/variance depends on a baseline level, that is level set as the benchmark, like human level performance...
+- for high bias problem --> adding more training examples doesn't help while for high variance, it might helps.
