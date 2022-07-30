@@ -74,3 +74,19 @@ consists of several binary classifications. Therefore in the output layer, we us
 
 - SparseCategoricalCrossentropy: use when we expect outputs to be integers corresponding to the indices.
 - CategoricalCrossentropy: Expects the target value of an example to be one-hot encoded where the value at the target index is 1 while the other N-1 entries are zero. An example with 10 potential target values, where the target is 2 would be [0,0,1,0,0,0,0,0,0,0].
+
+# 10. Best practices
+
+## a. Basic things
+- get more training examples
+- smaller set of features
+- get additional features
+- add polynomial features
+- regularized: with $\lambda$ --> increase or decrease $\lambda$
+## b. Diagnostic
+common mistake: only training and test set. Then new parameters are (unintentionally) added based on test set. For example: linear model --> add $x^2, x^3, x^4,..., x^d,...$ and check test errors to find the smallest one. This is not right since it depends on test set. To avoid this we use cross-validation set (validation set/development set/ dev set) and find smallest validation errors. $d$ found only depends on validation test and not on test set, hence gives a fairly correct one.
+
+High bias (training error is high) vs high variance (validation error >> training error):
+- $d$ = polynomial degree, runs from 1 to very large, then training error runs from high to low, appro 0. However, validation error runs from high, low at somewhere in middle then high again.
+- similar fact happens for regularization parameter $\lambda$, but somewhat like the mirror image of the case of polynomial degree.
+- define bias/variance depends on a baseline level, that is level set as the benchmark, like human level performance...
