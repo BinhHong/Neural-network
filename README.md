@@ -86,8 +86,32 @@ consists of several binary classifications. Therefore in the output layer, we us
 ## b. Diagnostic
 common mistake: only training and test set. Then new parameters are (unintentionally) added based on test set. For example: linear model --> add $x^2, x^3, x^4,..., x^d,...$ and check test errors to find the smallest one. This is not right since it depends on test set. To avoid this we use cross-validation set (validation set/development set/ dev set) and find smallest validation errors. $d$ found only depends on validation test and not on test set, hence gives a fairly correct one.
 
-High bias (training error is high) vs high variance (validation error >> training error):
+High bias (training error $J_t$ is high) vs high variance (validation error $J_v$>> training error $J_t$):
 - $d$ = polynomial degree, runs from 1 to very large, then training error runs from high to low, appro 0. However, validation error runs from high, low at somewhere in middle then high again.
 - similar fact happens for regularization parameter $\lambda$, but somewhat like the mirror image of the case of polynomial degree.
-- define bias/variance depends on a baseline level, that is level set as the benchmark, like human level performance...
+- learning curve: graph of $J_t$ and $J_v$ w.r.t number of training examples. We need to define bias/variance depends on a baseline level, that is level set as the benchmark, like human level performance...
 - for high bias problem --> adding more training examples doesn't help while for high variance, it might helps.
+
+## c. Debugging a learning algorithm
+- high bias: 
+  - getting more features
+  - adding polynomial features
+  - decreasing $\lambda$
+- high variance:
+  - getting more examples
+  - getting smaller set of features
+  - increasing $\lambda$
+  
+## d. Neural networks and regularization
+- on a quite small training set, if high bias --> make larger network until high bias is low (at the cost of speed).
+- now it might gets high variance --> get more training example until it is good.
+
+Regularization can be applied to the cost function with all the parameters used in all layers. 
+
+# 11. Interative loop of ML development
+
+choose architecture --> train model --> diagnostics (bias/variance and then error analysis, where we look at a sample of where the work is doing wrong and find which are the most common mistakes, then collect more data on these to examine, add, improve..) --> repeat.
+# 12. Precision, recall and F1 score
+- recall $\sim$ TP rate (for concrete case, not for statistics case): of all patients actually having disease, what fraction is correctly classified?
+- precision $\sim$ positive predictive number: of all patiens classied as positive, what fraction actually has disease?
+- F1 score = harmonic mean
