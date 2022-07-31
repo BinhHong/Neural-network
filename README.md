@@ -86,7 +86,7 @@ consists of several binary classifications. Therefore in the output layer, we us
 ## b. Diagnostic
 common mistake: only training and test set. Then new parameters are (unintentionally) added based on test set. For example: linear model --> add $x^2, x^3, x^4,..., x^d,...$ and check test errors to find the smallest one. This is not right since it depends on test set. To avoid this we use cross-validation set (validation set/development set/ dev set) and find smallest validation errors. $d$ found only depends on validation test and not on test set, hence gives a fairly correct one.
 
-High bias (training error $J_t$ is high) vs high variance (validation error $J_v$>> training error $J_t$):
+High bias (training error $J_t$ is high) vs high variance (validation error $J_v$ >> training error $J_t$):
 - $d$ = polynomial degree, runs from 1 to very large, then training error runs from high to low, appro 0. However, validation error runs from high, low at somewhere in middle then high again.
 - similar fact happens for regularization parameter $\lambda$, but somewhat like the mirror image of the case of polynomial degree.
 - learning curve: graph of $J_t$ and $J_v$ w.r.t number of training examples. We need to define bias/variance depends on a baseline level, that is level set as the benchmark, like human level performance...
@@ -106,7 +106,11 @@ High bias (training error $J_t$ is high) vs high variance (validation error $J_v
 - on a quite small training set, if high bias --> make larger network until high bias is low (at the cost of speed).
 - now it might gets high variance --> get more training example until it is good.
 
-Regularization can be applied to the cost function with all the parameters used in all layers. 
+Regularization can be applied to the cost function with all the parameters used in all layers, adding 
+
+`tensorflow.keras.regularizers.l2(...)`
+
+
 
 # 11. Interative loop of ML development
 
